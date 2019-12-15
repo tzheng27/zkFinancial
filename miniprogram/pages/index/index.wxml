@@ -2,13 +2,13 @@
   <view class="page-header">
     <swiper indicator-dots="true" autoplay="true" duration="500" interval="2000">
       <swiper-item>
-        <image class="wx-image" mode="aspectFit" src="./zk1.JPG" />
+        <image class="wx-image" mode="aspectFit" src="cloud://playground-zt.706c-playground-zt-1300872114/zk1.JPG" />
       </swiper-item>
       <swiper-item>
-        <image class="wx-image" mode="aspectFit" src="./zk2.JPG" />
+        <image class="wx-image" mode="aspectFit" src="cloud://playground-zt.706c-playground-zt-1300872114/zk2.JPG" />
       </swiper-item>
       <swiper-item>
-        <image class="wx-image" mode="aspectFit" src="./zk3.JPG" />
+        <image class="wx-image" mode="aspectFit" src="cloud://playground-zt.706c-playground-zt-1300872114/zk3.JPG" />
       </swiper-item>
     </swiper>
   </view> <!--page-header-->

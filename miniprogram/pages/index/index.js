@@ -24,6 +24,13 @@ Page({
     })
   },
 
+  onShareAppMessage() {
+    return {
+      title: 'swiper',
+      path: 'page/index/index'
+    }
+  },
+
   onCalculate: function(e) {
     this.setData ({
       calculator: true,
@@ -50,13 +57,6 @@ Page({
 
   mortgageCheckBoxChange: function(e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
-  },
-
-  onShareAppMessage() {
-    return {
-      title: 'swiper',
-      path: 'page/component/pages/swiper/swiper'
-    }
   }
 })
 
