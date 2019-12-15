@@ -62,15 +62,15 @@
         <form bindsubmit="onSubmit">
           <view class="inputGroup"> 
             <view class="inputBox">
-              <input auto-focus placeholder="您的姓名"/>
+              <input placeholder="您的姓名" bindchange="onNameChange"/>
             </view>
 
             <view class="inputBox">
-              <input auto-focus placeholder="电话号码"/>
+              <input placeholder="电话号码" bindchange="onCellChange"/>
             </view>
 
             <view class="inputBox">
-              <input auto-focus placeholder="电子邮箱"/>
+              <input placeholder="电子邮箱" bindchange="onEmailChange"/>
             </view>
 
             <view class="inputBox dateBox"> 
@@ -101,7 +101,7 @@
             </view>
 
             <view class="buttonBox">
-              <button class="btn" bindtap="onSubmitContactInfo">确定</button>
+              <button class="btn" bindtap="sendEmail">确定</button>
             </view>
           </view>
         </form>
