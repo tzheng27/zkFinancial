@@ -1,61 +1,102 @@
-<!--index.wxml-->
 <view class="container">
+  <view class="page-header">
+    <swiper indicator-dots="true" autoplay="true" duration="500" interval="2000">
+      <swiper-item>
+        <image class="wx-image" mode="aspectFit" src="./zk1.JPG" />
+      </swiper-item>
+      <swiper-item>
+        <image class="wx-image" mode="aspectFit" src="./zk2.JPG" />
+      </swiper-item>
+      <swiper-item>
+        <image class="wx-image" mode="aspectFit" src="./zk3.JPG" />
+      </swiper-item>
+    </swiper>
+  </view> <!--page-header-->
 
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-      size="default"
-    ></button>
-    <view class="userinfo-nickname-wrapper">
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
-    </view>
-  </view>
-
-
-  <!-- 上传图片 -->
-  <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
-      <text>上传图片</text>
-    </view>
-    <view class="uploader-container" wx:if="{{imgUrl}}">
-      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
-    </view>
-  </view>
-
-
-  <!-- 操作数据库 -->
-  <view class="uploader">
-    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
-      <text>前端操作数据库</text>
-    </navigator>
-  </view>
-
-  <!-- 即时通信 -->
-  <view class="uploader">
-    <navigator url="../im/im" open-type="navigate" class="uploader-text">
-      <text>即时通信 Demo</text>
-    </navigator>
-  </view>
-
-  <!-- 新建云函数 -->
-  <view class="uploader">
-    <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
-      <text>快速新建云函数</text>
-    </navigator>
-  </view>
-
-  <!-- 云调用 -->
-  <view class="uploader">
-    <navigator url="../openapi/openapi" open-type="navigate" class="uploader-text">
-      <text>云调用</text>
-    </navigator>
-  </view>
+  <view class="page-body">
+    <view class="nav">
+      <view class="{{calculator ? 'selected':'default'}}" bindtap="onCalculate">
+        算算贷款
+      </view>
+      <view class="{{contact ? 'selected':'default'}}" bindtap="onContact">
+        联系我们
+      </view>
+      <view class="{{application ? 'selected':'default'}}" bindtap="onApplication">
+        我的申请
+      </view>
+    </view> <!--nav-->
     
-  <view class="zk">
+    <view class="page-detail">
+      <view class="{{calculator ? 'show':'hidden'}}">
+        
+      </view> <!--calculator-->
 
-  </view>
-</view>
+      <view class="{{contact ? 'show':'hidden'}}">
+        <form bindsubmit="onSubmit">
+          <view class="inputGroup"> 
+            <view class="inputBox">
+              <input auto-focus placeholder="您的姓名"/>
+            </view>
+
+            <view class="inputBox">
+              <input auto-focus placeholder="电话号码"/>
+            </view>
+
+            <view class="inputBox">
+              <input auto-focus placeholder="电子邮箱"/>
+            </view>
+
+            <view class="inputBox dateBox"> 
+              <view class="dateSubBox">
+                预约日期: 
+              </view>
+
+              <view class="dateSubBox pickerDate">
+                <picker mode="date" value="{{date}}" start="{{today}}" end="2020-02-01" bindchange="onDateChange">
+                  <view class="picker">{{date}}</view>
+                </picker>
+              </view>
+
+              <view class="dateSubBox pickerTime">
+                <picker mode="time" value="{{time}}" start="9:00" end="16:00" bindchange="onTimeChange">
+                  <view class="picker">{{time}}</view>
+                </picker>
+              </view>
+            </view>
+
+            <view class="inputBox">
+                <checkbox-group class="mortgageBox mortgageChoice" bindchange="mortgageCheckBoxChange">
+                  <label class="mortgageSubBox" wx:for="{{mortgageTypes}}">
+                    <checkbox value="{{item.name}}" checked="{{item.checked}}"/>
+                    {{item.value}}
+                  </label>
+                </checkbox-group>
+            </view>
+
+            <view class="buttonBox">
+              <button class="btn" formType="submit">确定</button>
+            </view>
+          </view>
+        </form>
+      </view> <!--contact-->
+
+      <view class="{{application ? 'show':'hidden'}}">
+        申请
+      </view> <!--application-->
+
+    </view> <!--page-detail-->
+  </view> <!--page-body-->
+
+  <!--<view class="page-foot">
+  <view class="infoGroup">
+          <view class="infoSubGroupText">
+            <view class="textSubgroup">电话： 647-669-7987</view>
+            <view class="textSubgroup">地址： 7100 Woodbine Ave, Markham ON L3R 5J2</view>
+          </view>
+
+          <view class="infoSubGroupMap">
+            <map id="map" longitude="-79.349540" latitude="43.816150" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style=" height: 150px;"></map>
+          </view>
+        </view> 
+  </view>-->
+</view> <!--container-->

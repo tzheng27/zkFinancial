@@ -1,153 +1,136 @@
-/**index.wxss**/
-
 page {
-  background: #f6f6f6;
+  background:f6f6f6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 100vw;
+  height: 100vh
 }
 
-.userinfo, .uploader, .tunnel {
-  margin-top: 40rpx;
-  height: 140rpx;
-  width: 100%;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
+.container,  {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh
+}
+
+.page-header, swiper, swiper-item, .wx-image {
+  width: 100vw;
+  height: 20vh;
+}
+
+.page-body {
+  width: 100vw;
+  height: 60vh;
+}
+
+/*.page-foot {
+  width: 100vw;
+  height: 20vh;
+  background-color: black;
+  bottom: 0;
+  position: fixed;
+}*/
+
+.nav {
+  margin: 20rpx;
+  width: 100vw;
+  height:10%;
+  display:flex;
+  flex-direction: row;
+}
+
+.page-detail {
+  width: 100vw;
+  height: 90%;
+}
+
+.default {
+  line-height: 100rpx;
+  text-align: center;
+  flex: 1;
   border-right: none;
+  color: #5d5d5d;
+  font-size:28rpx;
+}
+
+.selected {
+  line-height: 100rpx;
+  text-align: center;
+  flex: 1;
+  border-right: none;
+  color: darkred;
+  font-size:28rpx;
+  border-bottom: 4rpx solid darkred;
+}
+
+.show {
+  display: block;
+  padding: 0;
+  width: 100%;
+  height: 90vh;
+}
+
+.hidden {
+  display: none; 
+  text-align: center;
+  line-height: 200rpx;
+}
+
+.inputGroup {
+  padding-top:10px;
+}
+
+.inputBox {
+  margin:25px;
+  padding:5px;
+  border: 1px solid lightgray;
+  background-color: white;
+}
+
+.dateBox, .mortgageBox {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  transition: all 300ms ease;
 }
 
-.userinfo {
-  padding-left: 120rpx;
-}
-
-.userinfo-avatar {
-  width: 100rpx;
-  height: 100rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-  background-size: cover;
-  background-color: white;
-}
-
-.userinfo-avatar[size] {
-  width: 100rpx;
-}
-
-
-.userinfo-avatar:after {
-  border: none;
-}
-
-.userinfo-nickname {
-  font-size: 32rpx;
-  color: #007aff;
-  background-color: white;
-  background-size: cover;
-  text-align: left;
-  padding-left: 0;
-  margin-left: 10px;
-}
-
-.userinfo-nickname::after {
-  border: none;
-}
-
-.userinfo-nickname-wrapper {
+.dateSubBox, .mortgageSubBox {
   flex: 1;
 }
-
-.uploader, .tunnel {
-  height: auto;
-  padding: 0 0 0 40rpx;
-  flex-direction: column;
-  align-items: flex-start;
-  box-sizing: border-box;
+.pickerDate, .pickerTime {
+  text-align: center;
 }
 
-.uploader-text, .tunnel-text {
-  width: 100%;
-  line-height: 52px;
-  font-size: 34rpx;
-  color: #007aff;
+.buttonBox {
+  margin-top: 40px;
 }
 
-.uploader-container {
-  width: 100%;
-  height: 400rpx;
-  padding: 20rpx 20rpx 20rpx 0;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+.btn {
+  width: 90%;
+  margin-top: 30rpx;
+  background-color:mediumseagreen;
+  color: #FFF;
 }
 
-.uploader-image {
-  width: 100%;
-  height: 360rpx;
-}
 
-.tunnel {
-  padding: 0 0 0 40rpx;
-}
-
-.tunnel-text {
-  position: relative;
-  color: #222;
+.infoGroup {
+  margin-top: 15px;
+  margin-bottom: 0;
+  background-color: grey;
   display: flex;
   flex-direction: row;
-  align-content: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.tunnel-text:first-child {
-  border-top: none;
-}
-
-.tunnel-switch {
-  position: absolute;
-  right: 20rpx;
-  top: -2rpx;
-}
-
-.disable {
-  color: #888;
-}
-
-.service {
-  position: fixed;
-  right: 40rpx;
-  bottom: 40rpx;
-  width: 140rpx;
-  height: 140rpx;
-  border-radius: 50%;
-  background: linear-gradient(#007aff, #0063ce);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+.infoSubGroupText {
+  flex: 2;
   display: flex;
-  align-content: center;
-  justify-content: center;
-  transition: all 300ms ease;
+  flex-direction: column;
 }
 
-.service-button {
-  position: absolute;
-  top: 40rpx;
+.textSubgroup {
+  flex: 1;
+  font-size: 18rpx
 }
 
-.service:active {
-  box-shadow: none;
-}
-
-.request-text {
-  padding: 20rpx 0;
-  font-size: 24rpx;
-  line-height: 36rpx;
-  word-break: break-all;
+.infoSubGroupMap {
+  flex: 3
 }
