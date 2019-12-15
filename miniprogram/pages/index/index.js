@@ -10,6 +10,8 @@ Page({
       {name: 'refinance', value: 'Refinance', checked: false},
       {name: 'purchase', value: 'Purchase', checked: false}
     ],
+    credit: 400,
+    analyzed: false,
 
   },
 
@@ -26,8 +28,8 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: 'swiper',
-      path: 'page/index/index'
+      title: '中凯金融',
+      path: 'pages/index/index'
     }
   },
 
@@ -57,6 +59,43 @@ Page({
 
   mortgageCheckBoxChange: function(e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+  }, 
+
+  changeCredit: function(e) {
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      
+      credit: e.detail.value,
+    })
+  },
+
+  onSubmitContactInfo: function(e) {
+    wx.showToast({
+      title: "预约成功",
+      icon: 'success',
+      duration: 1000
+    })
+  },
+
+  CalculateMrg: function(e) {
+    console.log('credit: ', this.data.credit)
+    wx.showLoading({
+      title: '正在分析中',
+    })
+    
+    var that = this
+    setTimeout(function () {
+      wx.hideLoading()
+      that.setData({
+      analyzed: true
+    })
+    }, 2000)
+  },
+
+  ReturnToCal: function(e) {
+    this.setData({
+      analyzed: false
+    })
   }
 })
 

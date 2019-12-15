@@ -28,7 +28,34 @@
     
     <view class="page-detail">
       <view class="{{calculator ? 'show':'hidden'}}">
-        
+          <view class="calGroup {{analyzed ? 'hidden':'show'}}"> 
+            <view class="calBox">
+              <view class="section__title">您的信用分（估值）</view>
+              <slider name="slider" min="400" max="900" bindchange="changeCredit" show-value ></slider>
+            </view>
+
+            <!--<view class="calBox">
+              <input auto-focus placeholder="电话号码"/>
+            </view>-->
+            <view class="buttonCalBox">
+              <button class="btn" bindtap="CalculateMrg">开始分析</button>
+            </view>
+          </view> <!--calGroup-->
+
+          <view class="resultGroup {{analyzed ? 'show':'hidden'}}"> 
+            <view class="resultBox calBox">
+              <view>您的信用为： {{credit}}</view>
+              <view>恭喜您</view>
+              <view>可以获得A类银行贷款$1000000000</view>
+              <view>可以获得A类银行贷款$2000000000</view>
+              <view>可以获得A类银行贷款$3000000000</view>
+            </view>
+
+            <view class="buttonResultBox buttonCalBox">
+              <button class="btn" bindtap="ReturnToCal">返回重新分析</button>
+            </view>
+          </view> <!--calGroup-->
+
       </view> <!--calculator-->
 
       <view class="{{contact ? 'show':'hidden'}}">
@@ -74,14 +101,33 @@
             </view>
 
             <view class="buttonBox">
-              <button class="btn" formType="submit">确定</button>
+              <button class="btn" bindtap="onSubmitContactInfo">确定</button>
             </view>
           </view>
         </form>
       </view> <!--contact-->
 
       <view class="{{application ? 'show':'hidden'}}">
-        申请
+         <view class="appProgress">
+            准备材料
+            <progress percent="100" active/>
+         </view>
+         <view class="appProgress">
+            递交申请
+            <progress percent="100" active/>
+         </view>
+         <view class="appProgress">
+            lender受理
+            <progress percent="100" active/>
+         </view>
+         <view class="appProgress">
+            律师交接
+            <progress percent="100" active/>
+         </view>
+         <view class="appProgress">
+            签署offer
+            <progress percent="80" active/>
+         </view>
       </view> <!--application-->
 
     </view> <!--page-detail-->
