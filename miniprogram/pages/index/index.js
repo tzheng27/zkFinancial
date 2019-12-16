@@ -120,9 +120,10 @@ Page({
     wx.cloud.callFunction({
       name:"sendEmail",
       data: {
-        from: "zhengtian07@gmail.com",
+        from: "zhengtian07@outlook.com",
         subject: this.data.clientName + " 与中凯金融预约成功",
-        to: "zhengtian07@gmail.com",
+        toCompany: "zhengtian07@gmail.com",
+        toClient: this.data.clientEmail,
         body:"姓名： "+this.data.clientName+
               "\r\n电话："+this.data.clientCell+
               "\r\nEmail: "+this.data.clientEmail+

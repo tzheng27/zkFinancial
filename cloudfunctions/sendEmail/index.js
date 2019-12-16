@@ -8,25 +8,37 @@ var nodemailer = require('nodemailer')
 
 // 创建一个SMTP客户端对象
 let transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com', //网易163邮箱 smtp.163.com
-  port: 465, //网易邮箱端口 25
-  secure:true,
+  host: 'smtp-mail.outlook.com', 
+  secureConnection:false,
+  //port: 465, 
+  port: 587,
+  //secure:true,
+  tls:{
+    ciphers: 'SSLv3'
+  },
   auth: {
-    user: 'zhengtian07@gmail.com', //邮箱账号
-    pass: 'youaretheBEST27!' //邮箱的授权码
+    user: 'yourEmail', //邮箱账号
+    pass: 'yourPassword' //邮箱的授权码
   },
   path: '/usr/sbin/sendmail'
 });
 
 // 云函数入口函数
 exports.main = async(event, context) => {
-  // 创建一个邮件对象
-  let res = await transporter.sendMail({
-    from: event.from,
-    to: event.to,
-    subject: event.subject,
-    text:event.body
-  });
+  //创建一个邮件对象
+    let res = await transporter.sendMail({
+      from: event.from,
+      to: event.toCompany,
+      subject: event.subject,
+      text:event.body
+   });
+   if(event.toClient !== null)
+   await transporter.sendMail({
+      from: event.from,
+      to: event.toClient,
+      subject: event.subject,
+      text:event.body
+   })
   return res;
   
 }
