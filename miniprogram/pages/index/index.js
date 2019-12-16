@@ -15,6 +15,19 @@ Page({
 
   },
 
+  onLaunch: function(){
+    if(!wx.cloud) {
+      console.error('请使用更高的版本')
+    }else{
+      wx.cloud.init({
+        
+        env: "playground-zt"
+      })
+    }
+
+    this.globalData = {}
+  },
+
   onLoad:function() {
     var currentDate = new Date()
     var month = currentDate.getMonth()+1
@@ -74,6 +87,18 @@ Page({
       title: "预约成功",
       icon: 'success',
       duration: 1000
+    })
+  },
+
+  sendEmail(){
+    wx.cloud.callFunction({
+      name: "sendEmailTwo",
+      success(res){
+        console.log("success sent", res)
+      },
+      fail(res){
+        console.log("fail to send", res)
+      }
     })
   },
 

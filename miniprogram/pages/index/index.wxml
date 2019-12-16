@@ -40,6 +40,11 @@
             <view class="buttonCalBox">
               <button class="btn" bindtap="CalculateMrg">开始分析</button>
             </view>
+
+            
+            <view class="buttonCalBox">
+              <button bindtap="sendEmail">send email</button>
+            </view>
           </view> <!--calGroup-->
 
           <view class="resultGroup {{analyzed ? 'show':'hidden'}}"> 
@@ -51,10 +56,14 @@
               <view>可以获得A类银行贷款$3000000000</view>
             </view>
 
+
+
+
             <view class="buttonResultBox buttonCalBox">
               <button class="btn" bindtap="ReturnToCal">返回重新分析</button>
             </view>
           </view> <!--calGroup-->
+
 
       </view> <!--calculator-->
 
