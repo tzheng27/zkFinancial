@@ -74,19 +74,11 @@
         <form bindsubmit="onSubmit">
           <view class="inputGroup"> 
             <view class="inputBox">
-<<<<<<< HEAD
-              <input type="text" name="name" value='{{ name }}'  auto-focus placeholder="您的姓名"/>
-            </view>
-
-            <view class="inputBox">
-              <input name='phone' type='number' value='{{ phone }}' auto-focus placeholder="电话号码"/>
-=======
               <input placeholder="您的姓名" bindchange="onNameChange"/>
             </view>
 
             <view class="inputBox">
               <input placeholder="电话号码" bindchange="onCellChange"/>
->>>>>>> master
             </view>
 
             <view class="inputBox">
@@ -175,11 +167,7 @@
             </view>
 
             <view class="buttonBox">
-<<<<<<< HEAD
               <button class='btn' form-type='submit'>免费获取贷款方案</button>
-=======
-              <button class="btn" bindtap="sendEmail">确定</button>
->>>>>>> master
             </view>
 
           </view>

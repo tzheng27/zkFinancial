@@ -1,12 +1,9 @@
 {
   "pages": [
-<<<<<<< HEAD
+
     "pages/index/index",
-    "pages/wheel/wheel",
-    "pages/form/form"
-=======
-    "pages/index/index"
->>>>>>> master
+    "pages/wheel/wheel"
+   
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

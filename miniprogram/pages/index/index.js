@@ -84,7 +84,8 @@ Page({
     wx.showToast({
       title: '提交成功！！！！',
     })
-    this.GoToPrize()
+    this.sendEmail();
+    this.GoToPrize();
   },
 
   /**
@@ -95,7 +96,7 @@ Page({
     const rules = {
       name: {
         required: true,
-        rangelength: [2, 8]
+        rangelength: [2, 16]
       },
       tel: {
         required: true,
@@ -212,23 +213,14 @@ Page({
     })
   },
 
-<<<<<<< HEAD
-  onSubmitContactInfo: function(e) {
-   
-
-    wx.showToast({
-      title: "预约成功",
-      icon: 'success',
-      duration: 1000
-=======
   sendEmail() {
     console.log("10")
     wx.cloud.callFunction({
       name:"sendEmail",
       data: {
-        from: "zhengtian07@outlook.com",
+        from: "frank.xiao@yahoo.com",
         subject: this.data.clientName + " 与中凯金融预约成功",
-        toCompany: "zhengtian07@gmail.com",
+        toCompany: "frankxiao008@gmail.com",
         toClient: this.data.clientEmail,
         body:"姓名： "+this.data.clientName+
               "\r\n电话："+this.data.clientCell+
@@ -252,23 +244,12 @@ Page({
           duration: 1000
         })
       }
->>>>>>> master
-    })
 
+    })
     this.GoToPrize()
   },
 
-  sendEmail(){
-    wx.cloud.callFunction({
-      name: "sendEmailTwo",
-      success(res){
-        console.log("success sent", res)
-      },
-      fail(res){
-        console.log("fail to send", res)
-      }
-    })
-  },
+
 
   CalculateMrg: function(e) {
     console.log('credit: ', this.data.credit)
@@ -294,12 +275,6 @@ Page({
   GoToPrize: function(){
     wx.navigateTo({ url: '/pages/wheel/wheel' })
   }
-<<<<<<< HEAD
-  
+
 })
 
-
-
-=======
-})
->>>>>>> master
