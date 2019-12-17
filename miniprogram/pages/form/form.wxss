@@ -1,0 +1,149 @@
+page {
+  font-size: 30rpx;
+}
+
+input:hover {
+  border-bottom: 2px solid #ddd;
+}
+
+button:active {
+  opacity: 0.7;
+}
+
+.container-info {
+  padding: 5%;
+}
+
+.man-form-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.man-form-info .name, .man-form-info .idcard, .man-form-info .phone,
+.man-form-info .regcode {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 2%;
+}
+
+.man-form-info input {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
+.regcode {
+  position: relative;
+}
+
+.regcode button {
+  border-radius: 10rpx;
+  background-color: #3879d9;
+  color: #fff;
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 23rpx;
+  width: 300rpx;
+  margin-top: -2%;
+}
+
+.regcode input {
+  width: 100%;
+}
+
+.code {
+  position: relative;
+  width: 100%;
+}
+
+.code button {
+  position: absolute;
+  top: 72rpx;
+  right: 0;
+}
+
+.self-idcard-info {
+  margin-top: 15%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  border: 1px dashed #ddd;
+  padding: 2%;
+}
+
+.f-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.picture_list {
+  padding: 0 7%;
+}
+
+.add-image {
+  background-color: #ddd;
+  color: #fff;
+}
+
+.upload_progress {
+  width: 167rpx;
+  height: 164rpx;
+}
+
+.apply {
+  width: 96%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+}
+
+.apply-deposit {
+  font-weight: bold;
+}
+
+.apply-deposit-amount {
+  font-weight: bold;
+  color: #fdd20c;
+}
+
+.apply button {
+  margin: 0;
+  padding: 0;
+  width: 240rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #fff;
+  background-color: #fdd20c;
+}
+
+.read-man-pact {
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+}
+
+.read-man-pact checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.pact {
+  border-bottom: 1px solid #ddd;
+}
+
+.submit-form-info {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-form-info button {
+  background-color: #fdd000;
+  width: 80%;
+  margin: 3% 0;
+}

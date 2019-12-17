@@ -15,9 +15,7 @@ Page({
     ],
     credit: 400,
     analyzed: false,
-    name: '',
-    email: '',
-    phone: ''
+
 
   },
 
@@ -29,8 +27,9 @@ Page({
         
         env: "playground-zt"
       })
-    }
 
+    }
+  
     this.globalData = {}
   },
 
@@ -44,63 +43,82 @@ Page({
       today: year+"-"+month+"-"+day
     })
     
-    // this.initValidate();
+    this.initValidate();
   },
 
-  initValidate: function(){
-    const rules = {
-      name: {
-        required: true
-      },
-      phone: {
-        required: true,
-        tel: true
-      },
-      email: {
-        email: true
-      }
+/////////////////////////////////////////////
+// begin of  the validation
 
-    }
-
-    const messages = {
-      name: {
-        required: '请填写你的姓名'
-      },
-      phone: {
-        required: '请填写联系电话',
-        tel: '请填写正确的联系电话'
-      }
-    }
-    this.WxValidate = new WxValidate(rules, messages)
-
+  showModal(error) {
+    wx.showModal({
+      content: error.msg,
+      showCancel: false,
+    })
   },
-
-  formSubmit: function (e) {
-    console.log('form发生了submit事件，携带的数据为：', e.detail.value)
+  submitForm(e) {
+    /**
+     * 4-3(表单提交校验)
+     */
     const params = e.detail.value
-    e.detail.value.name = this.data.name
-    e.detail.value.phone = this.data.phone
-    console.log(e.detail.value)
-    //校验表单
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
       this.showModal(error)
       return false
     }
-    //向后台发送时数据 wx.request...
 
-    // this.showModal({
-    //   msg: '提交成功'
-    // })
+    this.submitInfo(params);
   },
 
-  showModal(error){
-    wx.showModal({
-      
-      content: error.msg
+  /**
+   * 表单-提交
+   */
+  submitInfo(params) {
+    // form提交
+    let form = params;
+    console.log('将要提交的表单信息：', form);
+
+    wx.showToast({
+      title: '提交成功！！！！',
     })
+    this.GoToPrize()
   },
 
+  /**
+   * 表单-验证字段
+   */
+  initValidate() {
+
+    const rules = {
+      name: {
+        required: true,
+        rangelength: [2, 8]
+      },
+      tel: {
+        required: true,
+        tel: true,
+      }
+      // 配置false可关闭验证
+
+    }
+    // 验证字段的提示信息，若不传则调用默认的信息
+    const messages = {
+      name: {
+        required: '请输入姓名',
+        rangelength: '请输入2~4个汉字个汉字'
+      },
+      tel: {
+        required: '请输入10位手机号码',
+        tel: '请输入正确的手机号码',
+      }
+
+    }
+    // 创建实例对象
+    this.WxValidate = new WxValidate(rules, messages)
+
+  },
+
+// end of the validation
+/////////////////////////////////////////////
   onShareAppMessage() {
     return {
       title: '中凯金融',
@@ -122,6 +140,10 @@ Page({
       contact: true,
       application: false
     })
+  },
+
+  toFormValidate: function(e){
+    wx.navigateTo({ url: 'pages/form/form' })
   },
 
   onApplication: function(e) {
@@ -146,13 +168,7 @@ Page({
 
   onSubmitContactInfo: function(e) {
    
-    // const params = e.detail.value
 
-    // if (!this.WxValidate.checkForm(params)) {
-    //   const error = this.WxValidate.errorList[0]
-    //   this.showModal(error)
-    //   return false
-    // }
     wx.showToast({
       title: "预约成功",
       icon: 'success',
@@ -199,134 +215,7 @@ Page({
     wx.navigateTo({ url: '/pages/wheel/wheel' })
   }
   
-
-  // goToPrize: function() { wx.navigateTo({ url: '/pages/wheel/wheel', }) }
 })
 
 
-// //index.js
-// const app = getApp()
 
-// Page({
-//   data: {
-//     //avatarUrl: './user-unlogin.png',
-//     userInfo: {},
-//     logged: false,
-//     takeSession: false,
-//     requestResult: '',
-//     imgUrls: ['./zk1.JPG', './zk2.JPG', './zk3.JPG'],
-//     indicatorDots: true,
-//     vertical: false,
-//     autoplay: true,
-//     interval: 2000,
-//     duration: 500
-//   },
-
-//   onLoad: function() {
-//     if (!wx.cloud) {
-//       wx.redirectTo({
-//         url: '../chooseLib/chooseLib',
-//       })
-//       return
-//     }
-
-//     // 获取用户信息
-//     wx.getSetting({
-//       success: res => {
-//         if (res.authSetting['scope.userInfo']) {
-//           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-//           wx.getUserInfo({
-//             success: res => {
-//               this.setData({
-//                 avatarUrl: res.userInfo.avatarUrl,
-//                 userInfo: res.userInfo
-//               })
-//             }
-//           })
-//         }
-//       }
-//     })
-//   },
-
-//   onGetUserInfo: function(e) {
-//     if (!this.data.logged && e.detail.userInfo) {
-//       this.setData({
-//         logged: true,
-//         avatarUrl: e.detail.userInfo.avatarUrl,
-//         userInfo: e.detail.userInfo
-//       })
-//     }
-//   },
-
-//   onGetOpenid: function() {
-//     // 调用云函数
-//     wx.cloud.callFunction({
-//       name: 'login',
-//       data: {},
-//       success: res => {
-//         console.log('[云函数] [login] user openid: ', res.result.openid)
-//         app.globalData.openid = res.result.openid
-//         wx.navigateTo({
-//           url: '../userConsole/userConsole',
-//         })
-//       },
-//       fail: err => {
-//         console.error('[云函数] [login] 调用失败', err)
-//         wx.navigateTo({
-//           url: '../deployFunctions/deployFunctions',
-//         })
-//       }
-//     })
-//   },
-
-//   // 上传图片
-//   doUpload: function () {
-//     // 选择图片
-//     wx.chooseImage({
-//       count: 1,
-//       sizeType: ['compressed'],
-//       sourceType: ['album', 'camera'],
-//       success: function (res) {
-
-//         wx.showLoading({
-//           title: '上传中',
-//         })
-
-//         const filePath = res.tempFilePaths[0]
-        
-//         // 上传图片
-//         const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
-//         wx.cloud.uploadFile({
-//           cloudPath,
-//           filePath,
-//           success: res => {
-//             console.log('[上传文件] 成功：', res)
-
-//             app.globalData.fileID = res.fileID
-//             app.globalData.cloudPath = cloudPath
-//             app.globalData.imagePath = filePath
-            
-//             wx.navigateTo({
-//               url: '../storageConsole/storageConsole'
-//             })
-//           },
-//           fail: e => {
-//             console.error('[上传文件] 失败：', e)
-//             wx.showToast({
-//               icon: 'none',
-//               title: '上传失败',
-//             })
-//           },
-//           complete: () => {
-//             wx.hideLoading()
-//           }
-//         })
-
-//       },
-//       fail: e => {
-//         console.error(e)
-//       }
-//     })
-//   },
-
-// })

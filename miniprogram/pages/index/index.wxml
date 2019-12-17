@@ -24,9 +24,9 @@
       <view class="{{contact ? 'selected':'default'}}" bindtap="onContact">
         联系我们
       </view>
-      <view class="{{application ? 'selected':'default'}}" bindtap="onApplication">
+      <!-- <view class="{{application ? 'selected':'default'}}" bindtap="onApplication">
         我的申请
-      </view>
+      </view> -->
     </view> <!--nav-->
     
     <view class="page-detail">
@@ -46,7 +46,7 @@
 
             
             <view class="buttonCalBox">
-              <button class="btn"  hover-class='btn_hover' bindtap="onContact">提交资料立即抽奖</button>
+              <button class="btn"  hover-class='btn_hover' bindtap="toFormValidate">提交资料立即抽奖</button>
             </view>
           </view> <!--calGroup-->
 
@@ -112,11 +112,67 @@
                 </checkbox-group>
             </view>
 
-            <view class="buttonBox">
-              <button class="btn" bindtap="onSubmitContactInfo" hover-class='btn_hover'>立即抽奖</button>
+
+
+
+
+              <view class="buttonBox">
+                      <button class="btn" bindtap="onSubmitContactInfo" hover-class='btn_hover'>立即抽奖</button>
+                    </view>
+                  </view>
+        </form>
+      
+      
+        <form bindsubmit='submitForm'>
+          <view class="inputGroup">
+            <view class='container-info'>
+              <view class="man-form-info">
+                <view class='name inputBox'>
+                  <input placeholder='请输入姓名' name="name"></input>
+                </view>
+                <view class='phone inputBox'>
+                  <input maxlength='13' placeholder='请输入手机号码' type='number' bindinput="phoneValue" name="tel"></input>      
+                </view>
+                <view class='phone inputBox'>
+                  <input  placeholder='请输入你的邮箱' type='email' name="email"></input>
+                </view>
+              </view>
             </view>
+
+                        <view class="inputBox dateBox"> 
+              <view class="dateSubBox">
+                预约日期: 
+              </view>
+
+              <view class="dateSubBox pickerDate">
+                <picker mode="date" value="{{date}}" start="{{today}}" end="2020-02-01" bindchange="onDateChange">
+                  <view class="picker">{{date}}</view>
+                </picker>
+              </view>
+
+              <view class="dateSubBox pickerTime">
+                <picker mode="time" value="{{time}}" start="9:00" end="16:00" bindchange="onTimeChange">
+                  <view class="picker">{{time}}</view>
+                </picker>
+              </view>
+            </view>
+
+            <view class="inputBox">
+                <checkbox-group class="mortgageBox mortgageChoice" bindchange="mortgageCheckBoxChange">
+                  <label class="mortgageSubBox" wx:for="{{mortgageTypes}}">
+                    <checkbox value="{{item.name}}" checked="{{item.checked}}"/>
+                    {{item.value}}
+                  </label>
+                </checkbox-group>
+            </view>
+
+            <view class="buttonBox">
+              <button class='btn' form-type='submit'>免费获取贷款方案</button>
+            </view>
+
           </view>
         </form>
+      
       </view> <!--contact-->
 
       <view class="{{application ? 'show':'hidden'}}">
@@ -145,16 +201,4 @@
     </view> <!--page-detail-->
   </view> <!--page-body-->
 
-  <!--<view class="page-foot">
-  <view class="infoGroup">
-          <view class="infoSubGroupText">
-            <view class="textSubgroup">电话： 647-669-7987</view>
-            <view class="textSubgroup">地址： 7100 Woodbine Ave, Markham ON L3R 5J2</view>
-          </view>
-
-          <view class="infoSubGroupMap">
-            <map id="map" longitude="-79.349540" latitude="43.816150" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style=" height: 150px;"></map>
-          </view>
-        </view> 
-  </view>-->
 </view> <!--container-->

@@ -1,0 +1,24 @@
+<form bindsubmit='submitForm'>
+  <view class="container">
+    <view class='container-info'>
+      <view class="man-form-info">
+        <view class='name'>姓名
+          <input placeholder='请输入姓名' name="name"></input>
+        </view>
+        <view class='phone'>
+          手机号码
+          <input maxlength='13' placeholder='请输入手机号码' type='number' bindinput="phoneValue" name="tel"></input>      
+        </view>
+        <view class='phone'>
+          邮箱
+          <input  placeholder='请输入你的邮箱' type='email' name="email"></input>
+        </view>
+      </view>
+    </view>
+
+    <view class='submit-form-info'>
+      <button form-type='submit'>提交资料获取贷款方案</button>
+    </view>
+
+  </view>
+</form>
