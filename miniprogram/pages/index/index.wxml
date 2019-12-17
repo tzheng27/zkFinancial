@@ -10,6 +10,9 @@
       <swiper-item>
         <image class="wx-image" mode="aspectFit" src="cloud://playground-zt.706c-playground-zt-1300872114/zk3.JPG" />
       </swiper-item>
+      <swiper-item>
+        <image class="wx-image" mode="aspectFit" src="cloud://playground-zt.706c-playground-zt-1300872114/dazhuanpan.jpg" />
+      </swiper-item>   
     </swiper>
   </view> <!--page-header-->
 
@@ -38,12 +41,12 @@
               <input auto-focus placeholder="电话号码"/>
             </view>-->
             <view class="buttonCalBox">
-              <button class="btn" bindtap="CalculateMrg">开始分析</button>
+              <button class="btn"  hover-class='btn_hover' bindtap="CalculateMrg">开始分析</button>
             </view>
 
             
             <view class="buttonCalBox">
-              <button bindtap="sendEmail">send email</button>
+              <button class="btn"  hover-class='btn_hover' bindtap="onContact">提交资料立即抽奖</button>
             </view>
           </view> <!--calGroup-->
 
@@ -60,7 +63,7 @@
 
 
             <view class="buttonResultBox buttonCalBox">
-              <button class="btn" bindtap="ReturnToCal">返回重新分析</button>
+              <button class="btn" bindtap="ReturnToCal"  hover-class='btn_hover'>返回重新分析</button>
             </view>
           </view> <!--calGroup-->
 
@@ -71,11 +74,11 @@
         <form bindsubmit="onSubmit">
           <view class="inputGroup"> 
             <view class="inputBox">
-              <input auto-focus placeholder="您的姓名"/>
+              <input type="text" name="name" value='{{ name }}'  auto-focus placeholder="您的姓名"/>
             </view>
 
             <view class="inputBox">
-              <input auto-focus placeholder="电话号码"/>
+              <input name='phone' type='number' value='{{ phone }}' auto-focus placeholder="电话号码"/>
             </view>
 
             <view class="inputBox">
@@ -110,7 +113,7 @@
             </view>
 
             <view class="buttonBox">
-              <button class="btn" bindtap="onSubmitContactInfo">确定</button>
+              <button class="btn" bindtap="onSubmitContactInfo" hover-class='btn_hover'>立即抽奖</button>
             </view>
           </view>
         </form>

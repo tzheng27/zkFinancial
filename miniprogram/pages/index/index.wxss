@@ -147,3 +147,8 @@ page {
 .appProgress {
   margin: 20px;
 }
+
+.btn_hover {
+  opacity: 0.8;
+  transform: scale(0.9, 0.9);
+}

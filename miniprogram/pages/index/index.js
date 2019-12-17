@@ -1,3 +1,6 @@
+import WxValidate from '../../utils/WxValidate.js'
+
+
 Page({
   data: {
     calculator:true,
@@ -12,6 +15,9 @@ Page({
     ],
     credit: 400,
     analyzed: false,
+    name: '',
+    email: '',
+    phone: ''
 
   },
 
@@ -36,6 +42,62 @@ Page({
     this.setData ({
       date: year+"-"+month+"-"+day,
       today: year+"-"+month+"-"+day
+    })
+    
+    // this.initValidate();
+  },
+
+  initValidate: function(){
+    const rules = {
+      name: {
+        required: true
+      },
+      phone: {
+        required: true,
+        tel: true
+      },
+      email: {
+        email: true
+      }
+
+    }
+
+    const messages = {
+      name: {
+        required: '请填写你的姓名'
+      },
+      phone: {
+        required: '请填写联系电话',
+        tel: '请填写正确的联系电话'
+      }
+    }
+    this.WxValidate = new WxValidate(rules, messages)
+
+  },
+
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带的数据为：', e.detail.value)
+    const params = e.detail.value
+    e.detail.value.name = this.data.name
+    e.detail.value.phone = this.data.phone
+    console.log(e.detail.value)
+    //校验表单
+    if (!this.WxValidate.checkForm(params)) {
+      const error = this.WxValidate.errorList[0]
+      this.showModal(error)
+      return false
+    }
+    //向后台发送时数据 wx.request...
+
+    // this.showModal({
+    //   msg: '提交成功'
+    // })
+  },
+
+  showModal(error){
+    wx.showModal({
+      
+      content: error.msg
     })
   },
 
@@ -83,11 +145,21 @@ Page({
   },
 
   onSubmitContactInfo: function(e) {
+   
+    // const params = e.detail.value
+
+    // if (!this.WxValidate.checkForm(params)) {
+    //   const error = this.WxValidate.errorList[0]
+    //   this.showModal(error)
+    //   return false
+    // }
     wx.showToast({
       title: "预约成功",
       icon: 'success',
       duration: 1000
     })
+
+    this.GoToPrize()
   },
 
   sendEmail(){
@@ -121,8 +193,16 @@ Page({
     this.setData({
       analyzed: false
     })
+  },
+
+  GoToPrize: function(){
+    wx.navigateTo({ url: '/pages/wheel/wheel' })
   }
+  
+
+  // goToPrize: function() { wx.navigateTo({ url: '/pages/wheel/wheel', }) }
 })
+
 
 // //index.js
 // const app = getApp()
