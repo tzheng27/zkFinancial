@@ -15,6 +15,10 @@ Page({
     ],
     credit: 400,
     analyzed: false,
+    clientName:null,
+    clientCell:null,
+    clientEmail:null,
+    clientLoanType:null,
 
 
   },
@@ -154,18 +158,61 @@ Page({
     })
   },
 
-  mortgageCheckBoxChange: function(e) {
+ mortgageCheckBoxChange: function(e) {
+    
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      clientLoanType: e.detail.value,
+    })
   }, 
 
+  onNameChange: function(e) {
+    
+    console.log('Name input发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      clientName: e.detail.value,
+    })
+  }, 
+  
+  onCellChange: function(e) {
+    
+    console.log('Cell input发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      clientCell: e.detail.value,
+    })
+  }, 
+
+  onEmailChange: function(e) {
+    
+    console.log('Email input发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      clientEmail: e.detail.value,
+    })
+  }, 
+
+  onDateChange: function(e){
+    console.log('Date input发生change事件，携带value值为：', e.detail.value)
+    this.setData ({
+      date: e.detail.value,
+    })
+  },
+
+  onTimeChange: function(e){
+    console.log('Time input发生change事件，携带value值为：', e.detail.value)
+    this.setData ({
+      time: e.detail.value,
+    })
+  },
+
   changeCredit: function(e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    console.log('slider发生change事件，携带value值为：', e.detail.value)
     this.setData({
       
       credit: e.detail.value,
     })
   },
 
+<<<<<<< HEAD
   onSubmitContactInfo: function(e) {
    
 
@@ -173,6 +220,39 @@ Page({
       title: "预约成功",
       icon: 'success',
       duration: 1000
+=======
+  sendEmail() {
+    console.log("10")
+    wx.cloud.callFunction({
+      name:"sendEmail",
+      data: {
+        from: "zhengtian07@outlook.com",
+        subject: this.data.clientName + " 与中凯金融预约成功",
+        toCompany: "zhengtian07@gmail.com",
+        toClient: this.data.clientEmail,
+        body:"姓名： "+this.data.clientName+
+              "\r\n电话："+this.data.clientCell+
+              "\r\nEmail: "+this.data.clientEmail+
+              "\r\n日期："+this.data.date+
+              "\r\n时间："+this.data.time
+      },
+      success(res){
+        console.log("成功",res)
+         wx.showToast({
+          title: "预约成功",
+          icon: 'success',
+          duration: 1000
+        })
+      },
+      fail(res){
+        console.log("失败",res)
+        wx.showToast({
+          title: "预约失败",
+          icon: 'fail',
+          duration: 1000
+        })
+      }
+>>>>>>> master
     })
 
     this.GoToPrize()
@@ -214,8 +294,12 @@ Page({
   GoToPrize: function(){
     wx.navigateTo({ url: '/pages/wheel/wheel' })
   }
+<<<<<<< HEAD
   
 })
 
 
 
+=======
+})
+>>>>>>> master
