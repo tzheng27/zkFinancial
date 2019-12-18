@@ -70,7 +70,7 @@
             </view>
 
             <view class="inputBox">
-              <input placeholder="电子邮箱" bindchange="onEmailChange"/>
+              <input placeholder="电子邮箱" name="email"  bindchange="onEmailChange"/>
             </view>
 
             <view class="inputBox dateBox"> 
@@ -102,7 +102,7 @@
 
             <view class="buttonBox">
               <!-- <button class="btn" bindtap="sendEmail">确定</button> -->
-              <button class="btn" form-type='submit'>确定</button>
+              <button class="btn" form-type='submit'>提交资料抽奖</button>
             </view>
           </view>
         </form>

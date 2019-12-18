@@ -208,7 +208,7 @@ Page({
       title: '提交成功！！！！',
     })
     this.sendEmail();
-    // this.GoToPrize();
+    this.goToPrize();
   },
 
   /**
@@ -224,6 +224,9 @@ Page({
       tel: {
         required: true,
         tel: true,
+      },
+      email: {
+        email:true
       }
       // 配置false可关闭验证
 
@@ -237,17 +240,22 @@ Page({
       tel: {
         required: '请输入10位手机号码',
         tel: '请输入正确的手机号码',
+      },
+      email: {
+        email: '请输入有效的电子邮件地址'
       }
 
     }
     // 创建实例对象
     this.WxValidate = new WxValidate(rules, messages)
 
-  }
+  },
 
 // end of the validation
 /////////////////////////////////////////////
-
+  goToPrize: function () {
+    wx.navigateTo({ url: '/pages/wheel/wheel' })
+  }
 
 
 })
