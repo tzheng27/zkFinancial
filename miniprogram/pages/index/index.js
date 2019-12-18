@@ -1,3 +1,5 @@
+import WxValidate from '../../utils/WxValidate.js'
+
 Page({
   data: {
     calculator:true,
@@ -16,7 +18,6 @@ Page({
     clientCell:null,
     clientEmail:null,
     clientLoanType:null,
-
   },
 
   onLoad:function() {
@@ -33,7 +34,7 @@ Page({
   onShareAppMessage() {
     return {
       title: '中凯金融',
-      path: 'pages/index/index'
+      imageUrl: '../../images/zk1.png'
     }
   },
 

@@ -2,13 +2,13 @@
   <view class="page-header">
     <swiper indicator-dots="true" autoplay="true" duration="500" interval="2000">
       <swiper-item>
-        <image class="wx-image" mode="aspectFit" src="cloud://playground-zt.706c-playground-zt-1300872114/zk1.JPG" />
+        <image class="wx-image" mode="aspectFit" src="../../images/zk1.png" />
       </swiper-item>
       <swiper-item>
-        <image class="wx-image" mode="aspectFit" src="cloud://playground-zt.706c-playground-zt-1300872114/zk2.JPG" />
+        <image class="wx-image" mode="aspectFit" src="../../images/zk2.png" />
       </swiper-item>
       <swiper-item>
-        <image class="wx-image" mode="aspectFit" src="cloud://playground-zt.706c-playground-zt-1300872114/zk3.JPG" />
+        <image class="wx-image" mode="aspectFit" src="../../images/zk3.png" />
       </swiper-item>
     </swiper>
   </view> <!--page-header-->
@@ -62,11 +62,11 @@
         <form bindsubmit="onSubmit">
           <view class="inputGroup"> 
             <view class="inputBox">
-              <input placeholder="您的姓名" bindchange="onNameChange"/>
+              <input placeholder="您的姓名" name="name" bindchange="onNameChange"/>
             </view>
 
             <view class="inputBox">
-              <input placeholder="电话号码" bindchange="onCellChange"/>
+              <input placeholder="电话号码" name="tel" bindchange="onCellChange"/>
             </view>
 
             <view class="inputBox">
@@ -132,17 +132,4 @@
 
     </view> <!--page-detail-->
   </view> <!--page-body-->
-
-  <!--<view class="page-foot">
-  <view class="infoGroup">
-          <view class="infoSubGroupText">
-            <view class="textSubgroup">电话： 647-669-7987</view>
-            <view class="textSubgroup">地址： 7100 Woodbine Ave, Markham ON L3R 5J2</view>
-          </view>
-
-          <view class="infoSubGroupMap">
-            <map id="map" longitude="-79.349540" latitude="43.816150" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style=" height: 150px;"></map>
-          </view>
-        </view> 
-  </view>-->
 </view> <!--container-->
