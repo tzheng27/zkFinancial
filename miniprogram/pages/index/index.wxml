@@ -59,14 +59,14 @@
       </view> <!--calculator-->
 
       <view class="{{contact ? 'show':'hidden'}}">
-        <form bindsubmit="onSubmit">
+        <form bindsubmit='submitForm'>
           <view class="inputGroup"> 
             <view class="inputBox">
               <input placeholder="您的姓名" name="name" bindchange="onNameChange"/>
             </view>
 
             <view class="inputBox">
-              <input placeholder="电话号码" name="tel" bindchange="onCellChange"/>
+              <input placeholder="电话号码" maxlength='13' name="tel" bindchange="onCellChange"/>
             </view>
 
             <view class="inputBox">
@@ -101,7 +101,8 @@
             </view>
 
             <view class="buttonBox">
-              <button class="btn" bindtap="sendEmail">确定</button>
+              <!-- <button class="btn" bindtap="sendEmail">确定</button> -->
+              <button class="btn" form-type='submit'>确定</button>
             </view>
           </view>
         </form>

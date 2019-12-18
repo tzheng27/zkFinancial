@@ -29,6 +29,7 @@ Page({
       date: year+"-"+month+"-"+day,
       today: year+"-"+month+"-"+day
     })
+    this.initValidate();
   },
 
   onShareAppMessage() {
@@ -169,5 +170,84 @@ Page({
     this.setData({
       analyzed: false
     })
+  },
+
+/////////////////////////////////////////////
+// begin of  the validation
+
+  showModal(error) {
+    wx.showModal({
+      content: error.msg,
+      showCancel: false,
+    })
+  },
+
+  submitForm(e) {
+    /**
+     * 4-3(表单提交校验)
+     */
+    const params = e.detail.value
+    if (!this.WxValidate.checkForm(params)) {
+      const error = this.WxValidate.errorList[0]
+      this.showModal(error)
+      return false
+    }
+
+    this.submitInfo(params);
+  },
+
+  /**
+   * 表单-提交
+   */
+  submitInfo(params) {
+    // form提交
+    let form = params;
+    console.log('将要提交的表单信息：', form);
+
+    wx.showToast({
+      title: '提交成功！！！！',
+    })
+    this.sendEmail();
+    // this.GoToPrize();
+  },
+
+  /**
+   * 表单-验证字段
+   */
+  initValidate() {
+
+    const rules = {
+      name: {
+        required: true,
+        rangelength: [2, 16]
+      },
+      tel: {
+        required: true,
+        tel: true,
+      }
+      // 配置false可关闭验证
+
+    }
+    // 验证字段的提示信息，若不传则调用默认的信息
+    const messages = {
+      name: {
+        required: '请输入姓名',
+        rangelength: '请输入2~4个汉字个汉字'
+      },
+      tel: {
+        required: '请输入10位手机号码',
+        tel: '请输入正确的手机号码',
+      }
+
+    }
+    // 创建实例对象
+    this.WxValidate = new WxValidate(rules, messages)
+
   }
+
+// end of the validation
+/////////////////////////////////////////////
+
+
+
 })
